@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Pin Coordinate Finder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0c1d36;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { margin-bottom: 10px; color: #3a84c6; }
+        .upload-btn {
+            background: #3a84c6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .upload-btn:hover { background: #2a5f8f; }
+        
+        #map-container {
+            position: relative;
+            display: inline-block;
+            border: 2px solid #3a84c6;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 100%;
+            cursor: crosshair;
+        }
+        #map-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #4ade80;
+            border: 2px solid white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px #4ade80;
+        }
+        
+        #results {
+            margin-top: 20px;
+            background: #1a3a5c;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .coord-line {
+            background: #0c1d36;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #4ade80;
+            cursor: pointer;
+            border: 1px solid #3a84c6;
+        }
+        .coord-line:hover { background: #0c1d36; border-color: #4ade80; }
+        .instructions { color: #94a3b8; font-size: 0.9em; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>📍 Map Pin Coordinate Finder</h1>
+    <p class="instructions">1. Upload your map image. <br> 2. Click where you want each pin. <br> 3. Copy the generated code!</p>
+
+    <label class="upload-btn">
+        📂 Upload Map Image
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    </label>
+
+    <div id="map-container" style="display: none;">
+        <img id="map-image" src="" alt="Map">
+    </div>
+
+    <div id="results" style="display: none;">
+        <h3>📋 Click a result to copy the code</h3>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const mapContainer = document.getElementById('map-container');
+        const mapImage = document.getElementById('map-image');
+        const resultsDiv = document.getElementById('results');
+        const outputDiv = document.getElementById('output');
+        
+        let clicks = [];
+        const siteNames = ["Albion Coast", "Pointe-aux-Feuilles", "Blue Bay Marine Park"];
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    mapImage.src = event.target.result;
+                    mapContainer.style.display = 'inline-block';
+                    resultsDiv.style.display = 'block';
+                    clicks = [];
+                    outputDiv.innerHTML = '<p style="color: #94a3b8;">Click on the map...</p>';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        mapContainer.addEventListener('click', function(e) {
+            if (clicks.length >= 3) return; // Max 3 pins
+
+            const rect = mapContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const leftPercent = ((x / rect.width) * 100).toFixed(1);
+            const topPercent = ((y / rect.height) * 100).toFixed(1);
+
+            clicks.push({ left: leftPercent, top: topPercent });
+
+            // Add visual marker
+            const marker = document.createElement('div');
+            marker.className = 'marker';
+            marker.style.left = `${leftPercent}%`;
+            marker.style.top = `${topPercent}%`;
+            mapContainer.appendChild(marker);
+
+            // Update text output
+            const siteIndex = clicks.length - 1;
+            const siteName = siteNames[siteIndex];
+            const code = `left: '${leftPercent}%', top: '${topPercent}%'`;
+            
+            outputDiv.innerHTML += `<div class="coord-line" onclick="copyText(this)">${siteName}: ${code}</div>`;
+            
+            if (clicks.length === 3) {
+                outputDiv.innerHTML += `<p style="color: #4ade80; margin-top: 10px;">✅ All coordinates captured! Click lines to copy.</p>`;
+            }
+        });
+
+        function copyText(element) {
+            const text = element.innerText.split(': ')[1];
+            navigator.clipboard.writeText(text).then(() => {
+                const original = element.innerText;
+                element.innerText = "✅ Copied!";
+                element.style.background = "#4ade80";
+                element.style.color = "#0c1d36";
+                setTimeout(() => {
+                    element.innerText = original;
+                    element.style.background = "#0c1d36";
+                    element.style.color = "#4ade80";
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>

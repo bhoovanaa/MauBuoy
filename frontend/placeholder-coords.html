@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Position Finder</title>
+    <style>
+        body { 
+            background: #0c1d36; 
+            color: white; 
+            font-family: system-ui; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        h2 { color: #3a84c6; margin-bottom: 5px; }
+        p { color: #94a3b8; font-size: 0.9em; margin-bottom: 15px; }
+        
+        .container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 1200px; 
+            height: 600px; 
+            margin: 0 auto; 
+            border: 2px dashed #3a84c6; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            background: #0c1d36; 
+            cursor: crosshair; 
+        }
+        
+        .map-bg { 
+            position: absolute; 
+            inset: 0; 
+            background-size: contain; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            opacity: 0.8; 
+            pointer-events: none; 
+        }
+        
+        .grid { 
+            position: absolute; 
+            inset: 0; 
+            background-image: radial-gradient(#1a3a5c 1px, transparent 1px); 
+            background-size: 40px 40px; 
+            opacity: 0.4; 
+            pointer-events: none; 
+        }
+        
+        .marker { 
+            position: absolute; 
+            width: 220px; 
+            height: 100px; 
+            background: rgba(74, 222, 128, 0.2); 
+            border: 2px solid #4ade80; 
+            border-radius: 8px; 
+            transform: translate(-50%, -50%); 
+            pointer-events: none; 
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.5); 
+            z-index: 10; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ade80;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .results { 
+            margin-top: 20px; 
+            background: #1a3a5c; 
+            padding: 20px; 
+            border-radius: 8px; 
+            max-width: 800px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            text-align: left; 
+        }
+        
+        .coord-box { 
+            background: #0c1d36; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 6px; 
+            font-family: monospace; 
+            font-size: 0.9em; 
+            color: #4ade80; 
+            border: 1px solid #3a84c6; 
+            cursor: pointer; 
+            line-height: 1.6; 
+        }
+        .coord-box:hover { 
+            border-color: #4ade80; 
+            background: #112240; 
+        }
+        .coord-box .label {
+            color: #3a84c6;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .upload-btn { 
+            background: #3a84c6; 
+            color: white; 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            transition: 0.2s; 
+        }
+        .upload-btn:hover { background: #2a5f8f; }
+        
+        .reset-btn {
+            background: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+            display: none;
+        }
+        .reset-btn:hover { background: #dc2626; }
+    </style>
+</head>
+<body>
+
+    <h2>📍 Rectangle Position Finder</h2>
+    <p>Click where you want the CENTER of each card to appear in the dark background area.</p>
+
+    <label class="upload-btn">
+        📁 Upload Map Image
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+    </label>
+    <button class="reset-btn" id="resetBtn" onclick="resetTool()"> Reset</button>
+
+    <div class="container" id="mapContainer" style="display: none;">
+        <div class="map-bg" id="mapBg"></div>
+        <div class="grid"></div>
+    </div>
+
+    <div class="results" id="results" style="display: none;">
+        <h3>📋 Click any box to copy the coordinates</h3>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const mapContainer = document.getElementById('mapContainer');
+        const mapBg = document.getElementById('mapBg');
+        const resultsDiv = document.getElementById('results');
+        const outputDiv = document.getElementById('output');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        let clicks = [];
+        const sites = [
+            { name: "Albion Coast", id: "albion-coast", idx: 0 },
+            { name: "Pointe-aux-Feuilles", id: "pointe-aux-feuilles", idx: 1 },
+            { name: "Blue Bay Marine Park", id: "blue-bay", idx: 2 }
+        ];
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    mapBg.style.backgroundImage = `url('${event.target.result}')`;
+                    mapContainer.style.display = 'block';
+                    resultsDiv.style.display = 'block';
+                    resetBtn.style.display = 'inline-block';
+                    clicks = [];
+                    outputDiv.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">Click on the dark area to place Card 1, 2, and 3...</p>';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        mapContainer.addEventListener('click', function(e) {
+            if (clicks.length >= 3) return;
+
+            const rect = mapContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const leftPercent = ((x / rect.width) * 100).toFixed(1);
+            const topPercent = ((y / rect.height) * 100).toFixed(1);
+
+            clicks.push({ left: leftPercent, top: topPercent });
+
+            // Visual rectangle marker
+            const marker = document.createElement('div');
+            marker.className = 'marker';
+            marker.style.left = `${leftPercent}%`;
+            marker.style.top = `${topPercent}%`;
+            marker.textContent = `Card ${clicks.length}`;
+            mapContainer.appendChild(marker);
+
+            // Generate simple coordinate output
+            const site = sites[clicks.length - 1];
+            
+            outputDiv.innerHTML = sites.map((s, i) => {
+                if (i < clicks.length) {
+                    const c = clicks[i];
+                    return `
+                        <div class="coord-box" onclick="copyText(this, '${s.id}')">
+                            <div class="label">${s.name}</div>
+                            style={{ left: '${c.left}%', top: '${c.top}%', transform: 'translate(-50%, -50%)' }}
+                            <div style="color: #94a3b8; font-size: 0.85em; margin-top: 5px;">
+                                // Click to copy
+                            </div>
+                        </div>
+                    `;
+                }
+                return `<div style="color: #94a3b8; padding: 10px;">${s.name}: Waiting for click...</div>`;
+            }).join('');
+            
+            if (clicks.length === 3) {
+                outputDiv.innerHTML += `<p style="color: #4ade80; text-align: center; margin-top: 15px; font-weight: bold;">✅ All 3 positions captured! Click boxes above to copy.</p>`;
+            }
+        });
+
+        function copyText(el, siteId) {
+            const text = el.innerText.match(/style=\{\{ left: '.*?'\}\}/)[0];
+            navigator.clipboard.writeText(text).then(() => {
+                const origBg = el.style.background;
+                el.style.background = "#4ade80";
+                el.style.color = "#0c1d36";
+                setTimeout(() => { 
+                    el.style.background = origBg; 
+                    el.style.color = "#4ade80"; 
+                }, 700);
+            });
+        }
+
+        function resetTool() {
+            clicks = [];
+            mapContainer.innerHTML = '<div class="map-bg" id="mapBg"></div><div class="grid"></div>';
+            outputDiv.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">Click on the dark area to place Card 1, 2, and 3...</p>';
+        }
+    </script>
+</body>
+</html>

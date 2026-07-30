@@ -1,0 +1,16 @@
+{
+  "include": [
+    "backend/cv_model.py",
+    "backend/fusion.py",
+    "backend/gemma_orchestrator.py",
+    "backend/main.py",
+    "backend/test_integration_contract.py",
+    "backend/tool_schemas.py"
+  ],
+  "exclude": [
+    "backend/models"
+  ],
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "none"
+}

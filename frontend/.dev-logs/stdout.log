@@ -1,0 +1,14 @@
+
+> maubuoy-frontend@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.231.12.76:3000
+✓ Ready in 1171ms
+Creating turbopack project {
+  dir: 'C:\\Users\\KHUSHI\\Downloads\\MauBuoy-2\\MauBuoy-2\\frontend',
+  testMode: true
+}
+
+[?25h

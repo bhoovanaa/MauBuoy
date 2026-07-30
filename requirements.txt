@@ -1,0 +1,23 @@
+# Core
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+pydantic==2.5.0
+
+# Computer Vision
+torch>=2.2,<3
+torchvision>=0.17,<1
+ultralytics>=8.3,<9
+segment-anything==1.0
+numpy==1.26.2
+Pillow==10.1.0
+opencv-python==4.8.1.78
+
+# LLM Integration
+requests==2.31.0
+
+# Utilities
+python-dotenv==1.0.0
+joblib==1.5.3
+pandas==2.1.1
+scikit-learn==1.6.1

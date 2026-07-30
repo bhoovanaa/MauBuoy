@@ -1,0 +1,115 @@
+
+> maubuoy-frontend@0.1.0 dev
+> next dev --port 3000
+
+▲ Next.js 16.2.12 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.231.12.76:3000
+- Environments: .env.local
+✓ Ready in 1258ms
+Creating turbopack project {
+  dir: 'C:\\Users\\KHUSHI\\Downloads\\MauBuoy-2\\MauBuoy-2\\frontend',
+  testMode: true
+}
+
+○ Compiling / ...
+ GET / 200 in 6.4s (next.js: 6.0s, application-code: 447ms)
+ GET / 200 in 60ms (next.js: 7ms, application-code: 53ms)
+ GET /sites/albion-coast 200 in 1658ms (next.js: 1560ms, application-code: 98ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 4.3s (next.js: 4.0s, application-code: 245ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 138ms (next.js: 24ms, application-code: 113ms)
+ GET / 200 in 136ms (next.js: 12ms, application-code: 124ms)
+ GET /sites/albion-coast 200 in 95ms (next.js: 28ms, application-code: 66ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 128ms (next.js: 34ms, application-code: 94ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 2.9s (next.js: 599ms, application-code: 2.3s)
+✓ Compiled in 2.4s
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 1296ms (next.js: 576ms, application-code: 720ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 781ms (next.js: 79ms, application-code: 702ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 377ms (next.js: 34ms, application-code: 344ms)
+✓ Compiled in 1559ms
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 1827ms (next.js: 714ms, application-code: 1113ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 570ms (next.js: 78ms, application-code: 492ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 451ms (next.js: 68ms, application-code: 383ms)
+✓ Compiled in 801ms
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 1236ms (next.js: 541ms, application-code: 695ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 405ms (next.js: 56ms, application-code: 349ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 196ms (next.js: 34ms, application-code: 162ms)
+✓ Compiled in 388ms
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 550ms (next.js: 301ms, application-code: 249ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 370ms (next.js: 19ms, application-code: 351ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 204ms (next.js: 27ms, application-code: 177ms)
+✓ Compiled in 2.5s
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 1551ms (next.js: 55ms, application-code: 1496ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 827ms (next.js: 465ms, application-code: 362ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 686ms (next.js: 26ms, application-code: 659ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 531ms (next.js: 40ms, application-code: 491ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 534ms (next.js: 342ms, application-code: 192ms)
+○ Compiling /_error ...
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 21.9s (next.js: 13.4s, application-code: 8.6s)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 423ms (next.js: 178ms, application-code: 245ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 420ms (next.js: 237ms, application-code: 184ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 420ms (next.js: 303ms, application-code: 117ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 420ms (next.js: 368ms, application-code: 53ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 118ms (next.js: 60ms, application-code: 58ms)
+✓ Compiled in 1169ms
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 1058ms (next.js: 220ms, application-code: 838ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 182ms (next.js: 20ms, application-code: 162ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 5.6s (next.js: 792ms, application-code: 4.8s)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 155ms (next.js: 64ms, application-code: 91ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 101ms (next.js: 49ms, application-code: 52ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 104ms (next.js: 49ms, application-code: 55ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 500 in 17ms
+ GET / 500 in 378ms (next.js: 253ms, application-code: 125ms)
+ GET / 500 in 76ms (next.js: 49ms, application-code: 28ms)
+ GET / 500 in 201ms (next.js: 173ms, application-code: 28ms)
+ GET / 500 in 187ms (next.js: 60ms, application-code: 127ms)
+ GET / 200 in 2.3s (next.js: 1263ms, application-code: 1070ms)
+ GET / 200 in 513ms (next.js: 63ms, application-code: 450ms)
+ GET / 200 in 271ms (next.js: 17ms, application-code: 254ms)
+ GET /sites/albion-coast 200 in 376ms (next.js: 273ms, application-code: 103ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 278ms (next.js: 177ms, application-code: 101ms)
+✓ Compiled in 1335ms
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 819ms (next.js: 229ms, application-code: 589ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 1479ms (next.js: 71ms, application-code: 1408ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 919ms (next.js: 56ms, application-code: 863ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 917ms (next.js: 255ms, application-code: 662ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 915ms (next.js: 520ms, application-code: 395ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 919ms (next.js: 393ms, application-code: 525ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 919ms (next.js: 784ms, application-code: 135ms)
+✓ Compiled in 1840ms
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 2.5s (next.js: 149ms, application-code: 2.3s)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 2.8s (next.js: 248ms, application-code: 2.6s)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 2.3s (next.js: 166ms, application-code: 2.2s)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 2.3s (next.js: 480ms, application-code: 1849ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 2.3s (next.js: 620ms, application-code: 1718ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 2.3s (next.js: 1232ms, application-code: 1111ms)
+✓ Compiled in 880ms
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 1711ms (next.js: 906ms, application-code: 806ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 503ms (next.js: 124ms, application-code: 380ms)
+✓ Compiled in 1350ms
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 1430ms (next.js: 680ms, application-code: 750ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 182ms (next.js: 35ms, application-code: 146ms)
+✓ Compiled in 349ms
+✓ Compiled in 207ms
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 266ms (next.js: 125ms, application-code: 141ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 150ms (next.js: 12ms, application-code: 138ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 227ms (next.js: 13ms, application-code: 214ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 135ms (next.js: 19ms, application-code: 116ms)
+ GET / 200 in 2.0s (next.js: 707ms, application-code: 1334ms)
+○ Compiling /audit ...
+ GET /audit 200 in 4.3s (next.js: 4.1s, application-code: 247ms)
+ GET /sites/albion-coast 200 in 1204ms (next.js: 351ms, application-code: 853ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 832ms (next.js: 53ms, application-code: 780ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 298ms (next.js: 46ms, application-code: 252ms)
+ GET / 200 in 219ms (next.js: 25ms, application-code: 195ms)
+ GET /audit 200 in 86ms (next.js: 14ms, application-code: 72ms)
+ GET /sites/albion-coast 200 in 196ms (next.js: 27ms, application-code: 170ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 164ms (next.js: 29ms, application-code: 135ms)
+ GET / 200 in 198ms (next.js: 12ms, application-code: 186ms)
+ GET /sites/albion-coast 200 in 271ms (next.js: 35ms, application-code: 235ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 175ms (next.js: 31ms, application-code: 144ms)
+ GET /sites/albion-coast/buoys/albion-buoy-03 200 in 171ms (next.js: 37ms, application-code: 134ms)
+ GET / 200 in 114ms (next.js: 12ms, application-code: 102ms)
+ GET /sites/albion-coast 200 in 146ms (next.js: 26ms, application-code: 121ms)
+ GET /sites/albion-coast/buoys/albion-buoy-02 200 in 100ms (next.js: 27ms, application-code: 73ms)
+[?25h

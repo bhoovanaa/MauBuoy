@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+.env
+.venv
+.venv-broken
+
+backend/models/*
+!backend/models/README.md
+*.pkl
+
+.vscode/
+data/audit_log.db*
+
+.DS_Store
+data/
