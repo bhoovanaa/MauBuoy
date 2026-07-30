@@ -18,7 +18,6 @@ The system combines:
 
 - YOLO11n coral detection and Healthy/Bleached/Dead classification.
 - A conservative reliability gate that can return `Uncertain`.
-- Optional CoralSCOP SAM ViT-B mask refinement for accepted photo detections.
 - Sampled video analysis with near-duplicate close-up removal.
 - Environmental bleaching-risk prediction.
 - Explicit visual/environmental fusion and restoration recommendations.
