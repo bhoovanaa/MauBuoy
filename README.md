@@ -154,3 +154,4 @@ MauBuoy ReefGuardian was developed as a collaborative project.
 
 - [bhoovanaa](https://github.com/bhoovanaa)
 - [alexandra-leung](https://github.com/alexandra-leung)
+- [shruti-devi](https://github.com/shruti-devi)
