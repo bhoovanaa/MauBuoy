@@ -147,3 +147,10 @@ by target area, sharpness, and boundary clearance. No accepted detection means
 
 This is a hackathon decision-support prototype, not a substitute for field
 assessment by marine scientists.
+
+## Contributors
+
+MauBuoy ReefGuardian was developed as a collaborative project.
+
+- [bhoovanaa](https://github.com/bhoovanaa)
+- [alexandra-leung](https://github.com/alexandra-leung)
